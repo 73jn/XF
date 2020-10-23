@@ -11,13 +11,13 @@ using interface::XFResourceFactory;
 
 XFBehavior::XFBehavior(bool ownDispatcher)
 {
-    this->_hasOwnDispatcher = ownDispatcher;
-    if(ownDispatcher){
-        _pDispatcher = XFResourceFactory::getInstance()->createDispatcher();
+    this->_hasOwnDispatcher = ownDispatcher; //Set the boolean owndispatcher
+    if(ownDispatcher){ //If he has his own dispatcher
+        _pDispatcher = XFResourceFactory::getInstance()->createDispatcher(); //We create a new dispatcher and _pDispatcher point on it
     }
     else
     {
-        _pDispatcher = XFResourceFactory::getInstance()->getDefaultDispatcher();
+        _pDispatcher = XFResourceFactory::getInstance()->getDefaultDispatcher(); //We give to _pDispatcher the instance of the default dispatcher
     }
 }
 
@@ -61,10 +61,10 @@ interface::XFDispatcher *XFBehavior::getDispatcher()
 
 const XFTimeout *XFBehavior::getCurrentTimeout()
 {
-    if(getCurrentEvent()->getEventType()==XFEvent::Timeout){ //Return XFEvent cast in XFTimeout
+    if(getCurrentEvent()->getEventType()==XFEvent::Timeout){ //Return XFEvent cast in XFTimeout if its a timeout
         return ((XFTimeout*)getCurrentEvent());
     } else{
-        return nullptr;
+        return nullptr; //Else we return a nullptr
     }
 }
 
@@ -83,8 +83,8 @@ void XFBehavior::setCurrentEvent(const XFEvent *pEvent)
 
 interface::XFReactive::TerminateBehavior XFBehavior::process(const XFEvent *pEvent)
 {
-    setCurrentEvent(pEvent);
-    if(processEvent() == XFEventStatus::Terminate)
+    setCurrentEvent(pEvent); //We set the current event
+    if(processEvent() == XFEventStatus::Terminate) //If its a terminate event we return deleteOnTerminate_
     {
         return deleteOnTerminate_;
     }

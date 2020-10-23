@@ -13518,7 +13518,7 @@ OUTPUT(ide-sw4stm32-test2-idf.elf elf32-littlearm)
  .debug_macro   0x000342a9      0x2f8 xf/port/default-idf/mutex-default.o
  .debug_macro   0x000345a1      0x884 xf/port/idf-stm32cube/port-functions.o
 
-.debug_line     0x00000000    0x295f1
+.debug_line     0x00000000    0x295f0
  .debug_line    0x00000000      0xc77 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal.o
  .debug_line    0x00000c77      0xeb5 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_adc.o
  .debug_line    0x00001b2c      0xc90 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_cortex.o
@@ -13551,17 +13551,17 @@ OUTPUT(ide-sw4stm32-test2-idf.elf elf32-littlearm)
  .debug_line    0x0001d99a     0x142a platform/f7-disco-gcc/mcu/critical/critical.o
  .debug_line    0x0001edc4     0x14c8 platform/f7-disco-gcc/mcu/hal/uart.o
  .debug_line    0x0002028c       0x7f startup/startup_stm32f746xx.o
- .debug_line    0x0002030b     0x10fe xf/core/behavior.o
- .debug_line    0x00021409      0x13a xf/core/initialevent.o
- .debug_line    0x00021543      0xccf xf/core/nulltransition.o
- .debug_line    0x00022212      0x16e xf/core/timeout.o
- .debug_line    0x00022380     0x10fa xf/port/default/dispatcher-default.o
- .debug_line    0x0002347a      0xd6d xf/port/default/resourcefactory-default.o
- .debug_line    0x000241e7     0x1313 xf/port/default/timeoutmanager-default.o
- .debug_line    0x000254fa      0xd6e xf/port/default/xf-default.o
- .debug_line    0x00026268      0xf26 xf/port/default-idf/eventqueue-default.o
- .debug_line    0x0002718e      0xcaa xf/port/default-idf/mutex-default.o
- .debug_line    0x00027e38     0x17b9 xf/port/idf-stm32cube/port-functions.o
+ .debug_line    0x0002030b     0x10fd xf/core/behavior.o
+ .debug_line    0x00021408      0x13a xf/core/initialevent.o
+ .debug_line    0x00021542      0xccf xf/core/nulltransition.o
+ .debug_line    0x00022211      0x16e xf/core/timeout.o
+ .debug_line    0x0002237f     0x10fa xf/port/default/dispatcher-default.o
+ .debug_line    0x00023479      0xd6d xf/port/default/resourcefactory-default.o
+ .debug_line    0x000241e6     0x1313 xf/port/default/timeoutmanager-default.o
+ .debug_line    0x000254f9      0xd6e xf/port/default/xf-default.o
+ .debug_line    0x00026267      0xf26 xf/port/default-idf/eventqueue-default.o
+ .debug_line    0x0002718d      0xcaa xf/port/default-idf/mutex-default.o
+ .debug_line    0x00027e37     0x17b9 xf/port/idf-stm32cube/port-functions.o
 
 .debug_str      0x00000000   0x11c0e9
  .debug_str     0x00000000    0xfc067 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal.o

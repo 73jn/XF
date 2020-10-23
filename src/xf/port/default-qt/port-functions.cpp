@@ -43,7 +43,6 @@ protected:
 void XF_startTimeoutManagerTimer(uint32_t tickInterval)
 {
     timeoutManagerTimer.start(tickInterval);
-
     theTickInterval = tickInterval;
 }
 

@@ -34,12 +34,12 @@ XFTimeoutManagerDefault::~XFTimeoutManagerDefault()
 
 void XFTimeoutManagerDefault::start()
 {
-    XF_startTimeoutManagerTimer(10);
+    XF_startTimeoutManagerTimer(10); //Start the timer with 10ms
 }
 
 void XFTimeoutManagerDefault::scheduleTimeout(int32_t timeoutId, int32_t interval, interface::XFReactive *pReactive)
 {
-    addTimeout(new XFTimeout(timeoutId, interval, pReactive));
+    addTimeout(new XFTimeout(timeoutId, interval, pReactive)); //We call addtimeout, this function is called by the dispatcher
 }
 
 void XFTimeoutManagerDefault::unscheduleTimeout(int32_t timeoutId, interface::XFReactive *pReactive)
@@ -62,31 +62,26 @@ void XFTimeoutManagerDefault::unscheduleTimeout(int32_t timeoutId, interface::XF
 
 void XFTimeoutManagerDefault::tick()
 {
-    _pMutex->lock();
+    _pMutex->lock(); //We lock the mutex for prevents interrupts
     if(_timeouts.size()==0){ //If size == 0 we don't do anything
-        _pMutex->unlock();
+        _pMutex->unlock(); //Unlock the mutex
         return;
     }
-    TimeoutList::const_iterator  it = _timeouts.begin();
-    (*it)->substractFromRelTicks(XF_tickIntervalInMilliseconds());
+    TimeoutList::const_iterator  it = _timeouts.begin(); //We create an iterator and assign it to the begin of _timeouts list
+    (*it)->substractFromRelTicks(XF_tickIntervalInMilliseconds()); //We substract the first element in the list
     if((*it)->getRelTicks()<=0){ //If the new remaining tick of the timeouts is negative of null, we send the timeout to the dispatcher
         //Send to dispatcher
         returnTimeout((*it));
-
-
         //Delete timeout
-        //XFTimeout *toDelete;
-        //toDelete = *it;
         it = _timeouts.erase(it);
-        //delete toDelete;
     }
-     _pMutex->unlock();
+     _pMutex->unlock(); //Unlock the mutex
 }
 
 XFTimeoutManagerDefault::XFTimeoutManagerDefault()
 {
-    _timeouts.clear();
-    _pMutex = interface::XFMutex::create(); //NOT SUUUUUUUUUUUUUUURE
+    _timeouts.clear(); //CLear the timeouts list
+    _pMutex = interface::XFMutex::create(); //Create a new mutex
 }
 
 void XFTimeoutManagerDefault::addTimeout(XFTimeout *pNewTimeout)
