@@ -30,17 +30,13 @@ XFBehavior::~XFBehavior()
 
 void XFBehavior::startBehavior()
 {
-    GEN(XFInitialEvent);
-    //XFEvent *ev = new XFEvent(XFEvent::Initial,0,this);
-    //_pDispatcher->pushEvent(new XFEvent(XFEvent::Initial,0,this));
-
-
+    GEN(XFInitialEvent); //= pushEvent(new event)
 }
 
 void XFBehavior::pushEvent(XFEvent *pEvent)
 {
-    pEvent->setBehavior(this);
-    this->getDispatcher()->pushEvent(pEvent);
+    pEvent->setBehavior(this); //Set the behaviour
+    this->getDispatcher()->pushEvent(pEvent); //Send it to dispatcher
 }
 
 bool XFBehavior::deleteOnTerminate() const
@@ -65,8 +61,7 @@ interface::XFDispatcher *XFBehavior::getDispatcher()
 
 const XFTimeout *XFBehavior::getCurrentTimeout()
 {
-    //this->getCurrentEvent(); //NOT SUREEEEEEEEEEEEEEEEE
-    if(getCurrentEvent()->getEventType()==XFEvent::Timeout){
+    if(getCurrentEvent()->getEventType()==XFEvent::Timeout){ //Return XFEvent cast in XFTimeout
         return ((XFTimeout*)getCurrentEvent());
     } else{
         return nullptr;
@@ -74,11 +69,11 @@ const XFTimeout *XFBehavior::getCurrentTimeout()
 }
 
 void XFBehavior::scheduleTimeout(int timeoutId, int interval) {
-    getDispatcher()->scheduleTimeout(timeoutId, interval, this);
+    getDispatcher()->scheduleTimeout(timeoutId, interval, this); //Send the timeout to the dispatcher
 }
 
 void XFBehavior::unscheduleTimeout(int timeoutId) {
-    getDispatcher()->unscheduleTimeout(timeoutId, this);
+    getDispatcher()->unscheduleTimeout(timeoutId, this); //Send to the dispatcher the timeout that we want to unschedule
 }
 
 void XFBehavior::setCurrentEvent(const XFEvent *pEvent)
